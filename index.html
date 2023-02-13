@@ -1,0 +1,31 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <input type="text" id="inputMonto">
+
+    <script>
+      const monto = document.getElementById("inputMonto");
+    
+      monto.addEventListener("input", function() {
+        this.value = formatCurrency(this.value);
+      });
+    
+      function formatCurrency(input) {
+        let amount = input.replace(/[^0-9]/g, '');
+        amount = parseInt(amount);
+        if (isNaN(amount)) {
+          return '';
+        }
+        amount = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        amount = "$" + amount;
+    
+        return amount;
+      }
+    </script>
+    
+
+    
+  </body>
+</html>
